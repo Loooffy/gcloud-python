@@ -258,6 +258,9 @@ def _set_protobuf_value(value_pb, val):
             _set_protobuf_value(p_pb.value, value)
     elif attr == 'list_value':
         l_pb = value_pb.list_value
+        if len(val) == 0:
+            l_pb.extend([])
+
         for item in val:
             i_pb = l_pb.add()
             _set_protobuf_value(i_pb, item)

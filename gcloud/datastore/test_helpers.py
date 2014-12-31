@@ -484,3 +484,10 @@ class Test_set_protobuf_value(unittest2.TestCase):
         self.assertEqual(marshalled[0].string_value, values[0])
         self.assertEqual(marshalled[1].integer_value, values[1])
         self.assertEqual(marshalled[2].double_value, values[2])
+
+    def test_empty_list(self):
+        pb = self._makePB()
+        values = []
+        self._callFUT(pb, values)
+        marshalled = pb.list_value
+        self.assertEqual(len(marshalled), len(values))
